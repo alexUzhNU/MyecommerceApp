@@ -1,0 +1,75 @@
+@model IEnumerable<MyecommerceApp.Entities.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Orders</h1>
+<div class="row">
+    <div class="col text-right mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model) {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">DateOfPurchase: @Html.DisplayFor(modelItem => item.DateOfPurchase)</p>
+                    <p class="card-text">TotalPrice: @Html.DisplayFor(modelItem => item.TotalPrice)</p>
+                    <p class="card-text">ShippingDetails: @Html.DisplayFor(modelItem => item.ShippingDetails)</p>
+                    <p class="card-text">Customer: @Html.DisplayFor(modelItem => item.Customer.Name)</p>
+                    <a href="@Url.Action("Edit", new { id = item.OrderId })" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Details", new { id = item.OrderId })" class="btn btn-secondary">Details</a>
+                    <a href="@Url.Action("Delete", new { id = item.OrderId })" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+   <!-- <div class="text-right mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfPurchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfPurchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>-->

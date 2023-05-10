@@ -1,0 +1,31 @@
+@model IEnumerable<MyecommerceApp.Entities.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customer</h1>
+<div class="row">
+    <div class="col text-right mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model) {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Email)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Phone)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.ShippingAddress)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.BillingAddress)</p>
+                    <a href="@Url.Action("Edit", new { id = item.CustomerId })" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Details", new { id = item.CustomerId })" class="btn btn-secondary">Details</a>
+                    <a href="@Url.Action("Delete", new { id = item.CustomerId })" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

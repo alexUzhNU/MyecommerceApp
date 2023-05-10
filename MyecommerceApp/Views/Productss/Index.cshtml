@@ -1,0 +1,87 @@
+@model IEnumerable<MyecommerceApp.Entities.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Products</h1>
+
+<div class="row">
+    <div class="col text-right mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">Name: @Html.DisplayFor(modelItem => item.Name)</p>
+                    <p class="card-text">Price: @Html.DisplayFor(modelItem => item.Price)</p>
+                    <p class="card-text">Description: @Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="card-text">Image: @Html.DisplayFor(modelItem => item.Image)</p>
+                    <p class="card-text">Quantity: @Html.DisplayFor(modelItem => item.QuantityInStock)</p>
+
+                    <a href="@Url.Action("Edit", new { id = item.ProductId })" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Details", new { id = item.ProductId })" class="btn btn-secondary">Details</a>
+                    <a href="@Url.Action("Delete", new { id = item.ProductId })" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+        
+    <!-- <div class="text-right mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityInStock)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityInStock)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 
+-->
